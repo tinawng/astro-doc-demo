@@ -1,0 +1,64 @@
+---
+import "@styles/base.postcss"
+import Menu from "@components/Menu.astro"
+import Nav from "@components/Nav.astro"
+import { Sun, Moon, AudioWaveform } from "lucide-static"
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<script>
+  const theme_button = document.querySelector("[data-theme-button]")
+  theme_button.addEventListener("click", () => {
+    document.querySelector("body").classList.toggle("dark")
+    document.querySelector("[data-theme-sun]").classList.toggle("hidden")
+    document.querySelector("[data-theme-moon]").classList.toggle("hidden")
+  })
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="DSP Modules Documentation" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href=`${import.meta.env.BASE_URL}/favicon.svg` />
+    <meta name="generator" content={Astro.generator} />
+    <title>DSP Modules - {title}</title>
+  </head>
+  <body>
+    <header class="h-16 border-b pr-16">
+      <div class="h-full max-w-[1400px] mx-auto flex justify-end items-center gap-4">
+        <div class="h-1/2 border-r"></div>
+        <div data-theme-button>
+          <span data-theme-sun set:html={Sun} />
+          <span data-theme-moon class="hidden" set:html={Moon} />
+        </div>
+        <div class="h-1/2 border-r"></div>
+        <small class="text-muted">Made with 🌺</small>
+      </div>
+    </header>
+
+    <div class="relative max-w-[1400px] mx-auto grid grid-cols-[16rem_auto]">
+      <aside
+        class="fixed top-0 left-0 pl-8 h-full bg-stone-100 dark:bg-stone-800 border-r overflow-y-scroll overflow-x-clip"
+        style="width: calc(50% - min(calc(1400px / 2), 50%) + 16rem);"
+      >
+        <div class="ml-auto w-64 mr-6">
+          <a href=`${import.meta.env.BASE_URL}/` class="h-16 border-b flex items-center gap-2">
+            <div set:html={AudioWaveform} />
+            <p class="text-lg font-semibold">DSP Modules</p>
+          </a>
+          <Nav />
+        </div>
+      </aside>
+      <main class="col-start-2 py-16 pl-28 pr-16">
+        <slot />
+      </main>
+    </div>
+    <footer></footer>
+  </body>
+</html>

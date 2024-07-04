@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/Layout.astro"
+import { getCategoryModules, getCategories } from "@scripts/utils"
+
+export function getStaticPaths() {
+  return getCategories().map(category => ({ params: { category }, props: { modules: getCategoryModules(category) } }))
+}
+
+const { category } = Astro.params
+const { modules } = Astro.props
+---
+
+<Layout title={category}>
+  <h1>{category}</h1>
+  <div class="mt-12 grid grid-cols-3 grid-rows-2 gap-6">
+    {
+      Object.keys(modules).map(name => (
+        <a href={`${import.meta.env.BASE_URL}/modules/${name}`} class="card-link">
+          <h3>{name}</h3>
+          <small class="text-muted text-nowrap text-ellipsis overflow-clip">{modules[name].brief}</small>
+        </a>
+      ))
+    }
+  </div>
+</Layout>

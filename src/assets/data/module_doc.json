@@ -1,0 +1,22 @@
+{
+  "LoremIpsumModule": {
+    "category": "Lorem",
+    "author": "Tina Wang",
+    "date": "2018/02/12",
+    "brief": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies diam urna, a cursus nunc porta eget. Curabitur a lacus semper purus consectetur pulvinar vitae et turpis. Curabitur quis leo ac lectus pretium malesuada non et lacus. In ipsum arcu, convallis in ultricies in, maximus et nibh. In eleifend magna vel luctus pulvinar.",
+    "notes": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies diam urna, a cursus nunc porta eget. Curabitur a lacus semper purus consectetur pulvinar vitae et turpis. Curabitur quis leo ac lectus pretium malesuada non et lacus."],
+    "params": {
+      "param1": {
+        "desc": "Lorem Ipsum",
+        "unit": "s",
+        "mod": "Lorem Ipsum"
+      }
+    },
+    "inputs": {
+      "input1": "Lorem Ipsum"
+    },
+    "outputs": {
+      "output1": "Lorem Ipsum"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+---
+const { property } = Astro.props
+const [_key, values] = property
+---
+
+<div class="ml-8">
+  {
+    Object.entries(values).map(([k, v]) => (
+      <>
+        <span>
+          <i>{k}</i> : {v}
+        </span>
+        <br />
+      </>
+    ))
+  }
+</div>

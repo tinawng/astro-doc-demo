@@ -1,0 +1,23 @@
+---
+import { getCategories, getCategoryModuleNames } from "@scripts/utils"
+---
+
+<div class="mt-4">
+  {
+    getCategories().map(category => (
+      <ul class="font-bold">
+        {category}
+        {getCategoryModuleNames(category).map(module_name => (
+          <li>
+            <a
+              href={`${import.meta.env.BASE_URL}/modules/${module_name}`}
+              class="text-stone-500 dark:text-stone-400 hover:text-amber-500 active:text-amber-500 font-normal transition-colors"
+            >
+              {module_name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ))
+  }
+</div>
